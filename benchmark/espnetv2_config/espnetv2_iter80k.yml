@@ -36,7 +36,7 @@ optimizer:
 model:
   type: EESPNet_Seg
   num_classes: 19
-  pretrained: espnetv2.pdparams
+  pretrained_backbone: espnetv2_backbone.pdparams
   s: 2
 
 

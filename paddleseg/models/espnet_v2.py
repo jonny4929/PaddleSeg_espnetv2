@@ -333,11 +333,12 @@ class EESPNet_Seg(nn.Layer):
     """
     espnetv2 implementation for segmentation
     """
-    def __init__(self, num_classes=20, s=1, pretrained=None, gpus=1):
+    def __init__(self, num_classes=20, s=1, pretrained=None, pretrained_backbone=None):
         super().__init__()
         self.pretrained = pretrained
         self.net = EESPNet(s=s)
-        self.net.set_state_dict(paddle.load('./espnetv2_backbone.pdparams'))
+        if pretrained_backbone is not None:
+            self.net.set_state_dict(paddle.load(pretrained_backbone))
         if s <=0.5:
             p = 0.1
         else:
