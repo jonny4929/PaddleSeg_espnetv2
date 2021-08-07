@@ -1,0 +1,56 @@
+batch_size: 8
+iters: 80000
+
+train_dataset:
+  type: Cityscapes
+  dataset_root: /home/aistudio/data/cityscapes
+  transforms:
+    - type: ResizeStepScaling
+      min_scale_factor: 0.5
+      max_scale_factor: 2.0
+      scale_step_size: 0.25
+    - type: RandomPaddingCrop
+      crop_size: [512, 256]
+    - type: RandomHorizontalFlip
+    - type: RandomDistort
+      brightness_range: 0.4
+      contrast_range: 0.4
+      saturation_range: 0.4
+    - type: Normalize
+  mode: train
+
+val_dataset:
+  type: Cityscapes
+  dataset_root: /home/aistudio/data/cityscapes
+  transforms:
+    - type: Normalize
+  mode: val
+
+
+optimizer:
+  type: sgd
+  momentum: 0.9
+  weight_decay: 4.0e-5
+
+
+model:
+  type: EESPNet_Seg
+  num_classes: 19
+  pretrained: espnetv2.pdparams
+  s: 2
+
+
+
+lr_scheduler:
+  type: PolynomialDecay
+  learning_rate: 0.01
+  end_lr: 0
+  power: 0.9
+
+loss:
+  types:
+    - type: CrossEntropyLoss
+    - type: CrossEntropyLoss
+  coef: [1, 0.8]
+
+
