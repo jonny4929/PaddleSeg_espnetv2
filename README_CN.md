@@ -28,7 +28,7 @@ espnetv2_iter80k.yml $\Rightarrow$ espnetv2_lovasz_40k.yml $\Rightarrow$ espnetv
 
 最后，在espnetv2_finetune_40k.yml中，我们用DiceLoss和BootstrappedCrossEntropyLoss 对模型进行最后的finetune，达到了单尺度miou67.45%，多尺度miou69.06%的结果，单尺度miou比原作者所给出的精度高出1%。
 
-## evaluate
+## 验证结果
 
 | 模型 | backbone | miou | miou(ms+flip) | backbone链接 | model链接 |
 |-------|----------|------|---------------|--------------|-----------|
