@@ -12,6 +12,8 @@ Do not use python3.8. We find the following code not supported when using python
 
 paddlepaddle >= 2.1
 
+others are the same as paddleseg
+
 ## training tricks
 
 The configs are put in benchmark/espnetv2_config. please use it in the following order.
@@ -23,7 +25,7 @@ for the CityScapes dataset). we use the backbone pretrained on imagenet-1k provi
 
 Then, using espnetv2_lovasz_40k.yml, we use the lovasz loss to solve the problem of the unbalanced labels.
 
-Finally, using the espnetv2_finetune_40k.yml, we use DiceLoss and BootstrappedCrossEntropyLoss to finetune.
+Finally, using espnetv2_finetune_40k.yml, we use DiceLoss and BootstrappedCrossEntropyLoss to finetune.
 
 It cost about 30 hours to train the model using v100 provided by AIstudio
 
