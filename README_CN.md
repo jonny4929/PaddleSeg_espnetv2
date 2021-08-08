@@ -27,3 +27,9 @@ espnetv2_iter80k.yml $\Rightarrow$ espnetv2_lovasz_40k.yml $\Rightarrow$ espnetv
 我们在训练的过程中可以观察到部分类别在早期的miou为0，随着学习率的减小这些类别的指标才开始上升，推测主要原因是数据集的类别不均衡导致的，所以我们在espnetv2_lovasz_40k.yml采用lovasz loss进行训练，对这一问题进行针对性解决。
 
 最后，在espnetv2_finetune_40k.yml中，我们用DiceLoss和BootstrappedCrossEntropyLoss 对模型进行最后的finetune，达到了单尺度miou67.45%，多尺度miou69.06%的结果，单尺度miou比原作者所给出的精度高出1%。
+
+## evaluate
+
+| 模型 | backbone | miou | miou(ms+flip) | backbone链接 | model链接 |
+|-------|----------|------|---------------|--------------|-----------|
+|ESPNetv2_Seg|ESPNetv2|0.6745|0.6906|[百度网盘(提取码: 63tf)](https://pan.baidu.com/s/1HAqo9JTawwQtVlj2gPKY2g)|[百度网盘(提取码: 63tf)](https://pan.baidu.com/s/1HAqo9JTawwQtVlj2gPKY2g)|
